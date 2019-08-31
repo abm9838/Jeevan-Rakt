@@ -1,0 +1,52 @@
+html,body{
+    width: auto;
+    height: auto;
+    background: #383f48;
+    overflow-x: hidden;
+}
+
+.main-nav{
+    background: #272c33;
+}
+
+.side-nav{
+    background: #272c33;
+    width: 190px;
+}
+a{
+    color: #93b0c1;
+}
+.txt-white{
+    color: aliceblue;
+}
+
+.img-logo-main { 
+    width:150px; 
+    height:70px; 
+    position: fixed;
+    left: calc((100vw - 150px)/2);
+    
+} 
+.img-logo-main>img { 
+    width:100%; 
+    height:100%; 
+}
+.container-area{
+    overflow-y:scroll;
+    z-index: 1000;
+}
+
+
+.visit-no{
+    color: #f3bb16;
+}
+
+.user-img{
+    width: 200px;; 
+    height:200px; 
+}
+.user-img>img{
+    width:100%; 
+    height:100%;
+    border-radius: 15px;
+}
