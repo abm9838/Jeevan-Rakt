@@ -35,6 +35,69 @@
 
 </head>
 <body class=" bgr">
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" id="showpop" data-toggle="modal" data-target="#notification" hidden></button>
+<button type="button" class="btn btn-primary" id="showinfo"data-toggle="modal" data-target="#information" hidden></button>
+
+<!-- Modal -->
+<div class="modal fade show" id="notification" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" 
+aria-hidden="false" display="block">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-success" id="exampleModalLongTitle">Hey! Thankyou</h5>
+        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-white">
+        We received you request. we appriciate your decision for donating blood.<br>
+        We will inform you soon when someone needs blood in your location.<br><br>
+        <small class="text-info"><u><a href="../index.php" >Thankyou! Team Jeevan-Rakt</a></u></small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="close" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="information" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary" id="exampleModalLongTitle">Know Before you donate</h5>
+        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-white">
+      <p class="text-success">Few drops of your blood can save someones life 🙂.</p>
+      <p><span class="text-info">Note: </span>Before you donate blood you must know some points -</p>
+        <ul class="">
+          <li>You are eligible to donate blood if you are in good health</li>
+          <li>Your weigh at least 50Kg and are 17 years or older.</li>
+          <li>You are not eligible to donate blood if you:
+            <ul>
+              <li>Have ever used self-injected drugs (non-prescription)</li>
+              <li>Had hepatitis</li>
+              <li>Are in a high-risk group for AIDS</li>
+              <li>You cannot donate if you have a cold, flu, sore throat, cold sore, stomach bug or any other infection.</li>
+              <li>Have ever injected recreational drugs.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand d-lg-none" href="../index.php">Jeevan Rakht</a>
         <button class="navbar-toggler mt-2 mr-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -169,7 +232,7 @@
   </div>  
   <!-- Main Button -->                                  
     <div class="form-group mt-2">
-        <button type="submit" name="submit" class="btn btn-primary btn-block" onclick="validate();"> Send Msg </button>
+        <button type="submit" name="submit" id="submit" class="btn btn-primary btn-block" onclick="validate();"> Send Msg </button>
     </div> <!-- form-group// -->      
     <p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
 </form>
@@ -258,18 +321,45 @@
           <a href="#" class="m-2">Terms of Service</a>
         </div>
       </footer>
-
-      <script>
-       // $('#addtional').
-      <script>
-
+      
 </body>
+<script>
+  $(document).ready(function() {
+    var btn =  $("#submit");
+    $('input').focusout(function() {
+        if(this.value==""){
+            $(this).css('border', "2px solid red");
+            $(this).focus();
+            btn.disabled = true;
+        }else{
+          $(this).css('border', "2px solid green");
+          btn.disabled = false;
+        }
+    });
+    $('select').focusout(function() {
+        if(this.value==""){
+            $(this).css('border', "2px solid red");
+            $(this).focus();
+            btn.disabled = true;
+        }else{
+          $(this).css('border', "2px solid green");
+          btn.disabled = false;
+        }
+    });
+
+
+  });
+  
+</script>
 </html>
 
 
 <?php
 
 include('../dbcon.php');
+echo '<script type="text/javascript">',
+            '$("#showinfo").click();',
+            '</script>';
 
 if(isset($_POST['submit'])){
     
@@ -311,13 +401,13 @@ if(isset($_POST['submit'])){
    // $ndata = mysqli_fetch_assoc($res);
        
     if($res){
-        ?>
-        <script>
-            alert('We have received your details.\nWe will inform you soon when someone needs your help.\nThankyou! Team Jeevan-Rakt');
-        </script>
-        
-        <?php
-        
+      echo '<script type="text/javascript">',
+            '$("#showpop").click();',
+            '$("#close").on("click",function(){
+              window.location.href ="../index.php";
+            });',
+            '</script>';
+      header('Location: ../index.php');
     }
 
 

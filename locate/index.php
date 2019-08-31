@@ -35,6 +35,35 @@
 
 </head>
 <body class=" bgr">
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" id="showSuccess" data-toggle="modal" data-target="#notification" hidden></button>
+
+<!-- Modal -->
+<div class="modal fade show" id="notification" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" 
+aria-hidden="false" display="block">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-success" id="exampleModalLongTitle">Hey! Don't worry. We received your details ✔</h5>
+        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-white">
+        We will inform you soon when we find someone who can help you in your location. We will work hard to find a doner for you.<br><br>
+        <small class="text-info"><u><a href="../index.php" >Thankyou! Team Jeevan-Rakt</a></u></small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="close" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand d-lg-none" href="../index.php">Jeevan Rakht</a>
         <button class="navbar-toggler mt-2 mr-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -149,7 +178,10 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
 		</div>
-        <input class="form-control" type="date" placeholder="Date Of Birth" name="DOB" required>
+        <input placeholder="Date Of Birth" class="textbox-n form-control" type="text" onfocus="(this.type='date')" name="DOB" required>
+       <!-- <input class="form-control" type="date" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Date Of Birth" name="DOB" required>
+    
+    -->
     </div> 
     
     <!-- Additional -->
@@ -163,7 +195,7 @@
     <!-- Notify ME-->  
     <div class="form-check-inline">
     <label class="form-check-label">
-      <input type="checkbox" class="form-check-input ml-2" name="urgent" required> very urgent case 
+      <input type="checkbox" class="form-check-input ml-2" name="urgent" > very urgent case 
     </label>
   </div>  
   <!-- Main Button -->                                  
@@ -332,13 +364,12 @@ if(isset($_POST['submit'])){
    // $ndata = mysqli_fetch_assoc($res);
        
     if($res){
-        ?>
-        <script>
-            alert('We have received your details.\nDont\' worry,We will inform you as soon as we get someone to donate you.\nThankyou! Team Jeevan-Rakt');
-        
-        </script>
-        
-        <?php
+      echo '<script type="text/javascript">',
+      '$("#showSuccess").click();',
+      '$("#close").on("click",function(){
+        window.location.href ="../index.php";
+      });',
+      '</script>';
         
     }else{
         ?>

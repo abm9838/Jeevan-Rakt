@@ -5,6 +5,33 @@
 
 ?>
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" id="showpop" data-toggle="modal" data-target="#notification" hidden></button>
+
+<!-- Modal -->
+<div class="modal fade show" id="notification" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" 
+aria-hidden="false" display="block">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-success" id="exampleModalLongTitle">We received your details ✔</h5>
+        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-white">
+        We will contact you soon regarding your issue. Thanks for using our service.<br>We insist you to donate blood. for more information
+        visit our website <a href="https://jeevan-rakt.000webhostapp.com/">Jeevan-Rakt.</a><br>
+        <span class="text-success">Your few drops of blood can save someones life. 🙂</span><br>
+        <small class="text-info"><u><a href="index.php" >Thankyou! Team Jeevan-Rakt</a></u></small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="close" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="row">
 <div class="col-2">
 </div>
@@ -164,13 +191,12 @@ $(document).ready(function() {
    // $ndata = mysqli_fetch_assoc($res);
        
     if($res){
-        ?>
-        <script>
-            alert('We received Your Enquiry. We will contact you soon.\nThankyou! Team Jeevan-Rakt');
-            window.location.href = "index.php";
-        </script>
-        
-        <?php
+        echo '<script type="text/javascript">',
+            '$("#showpop").click();',
+            '$("#close").on("click",function(){
+              window.location.href ="../index.php";
+            });',
+            '</script>';
         
     }
 
