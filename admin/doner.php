@@ -14,14 +14,17 @@
             $res=mysqli_query($con,$query);
            while($data = mysqli_fetch_assoc($res)){
                 $age = calcAge($data['DOB']);
-                $botton = ' <button type="submit" id="deActivateButton" class="btn btn-sm btn-danger mt-1">
-                <input class="val" value="'.$data['Id'].'" style="display:none;">Deactivate</button>';
+
                 $Showname = '<strong class="d-inline-block mb-2 text-success">'.$data['Name'].'
                 <img src="../images/green-tick.png" height="20" width="20"></strong>';
+
+                $button = '<button type="submit" id="deActivateUserButton" class="btn btn-sm btn-danger mt-1">
+                <input class="val" value="'.$data['Id'].'" style="display:none;">Deactivate</button>';
+
                 $script = '<script>
                 $(document).ready(function() {
     
-                    $("#activateButton").click(function (){
+                    $("#activateUserButton").click(function (){
                         var val = this.firstElementChild.value;
                         console.log("Trying to activate..."+val);
                         //alert(val);
@@ -36,39 +39,37 @@
                             }
                         });
                     });
+    
+                    $("#deActivateUserButton").click(function (){
+                        var val = this.firstElementChild.value;
+                        console.log("Trying to deactivate..."+val);
+                        //alert(val);
+                        var varData = \'Id=\'+val;
+            
+                        $.ajax({
+                            type : \'POST\',
+                            url : \'deactivate.php\',
+                            data : varData,
+                            success : function(res){
+                                alert(res);
+                            }
+                        });
+                    });
                 });
                     
                 </script>';
+
                 if($data['Active']=='N'){
-                    $botton = ' <button type="submit" id="activateButton" class="btn btn-sm btn-success mt-1">
+                    $button = ' <button type="submit" id="activateUserButton" class="btn btn-sm btn-success mt-1">
                     <input class="val" value="'.$data['Id'].'" style="display:none;">Activate</button>';
                     $Showname = '<strong class="d-inline-block mb-2 text-danger">'.$data['Name'].'</strong>';
-                    $script = '<script>
-                    $(document).ready(function() {
-        
-                        $("#activateButton").click(function (){
-                            var val = this.firstElementChild.value;
-                            console.log("Trying to activate..."+val);
-                            //alert(val);
-                            var varData = \'Id=\'+val;
-                
-                            $.ajax({
-                                type : \'POST\',
-                                url : \'activate.php\',
-                                data : varData,
-                                success : function(res){
-                                    alert(res);
-                                }
-                            });
-                        });
-                    });
-                        
-                    </script>';
+                    
+                    
                 }
                 if($age<18){
-                    $botton = ' <button type="submit" id="BelowAgeButton" class="btn btn-sm btn-danger mt-1" disabled>Below Age</button>';
+                    $button = ' <button type="submit" id="BelowAgeButton" class="btn btn-sm btn-danger mt-1" disabled>Below Age</button>';
                 }else if($age>=60){
-                    $botton = ' <button type="submit" id="aboveAgeButton" class="btn btn-sm btn-danger mt-1" disabled>Above Age</button>';
+                    $button = ' <button type="submit" id="aboveAgeButton" class="btn btn-sm btn-danger mt-1" disabled>Above Age</button>';
                 
                 }
                 $response.='
@@ -91,7 +92,7 @@
                     <!--available only when auto inform is disabled
                 once sended update "sent" color-"Green"
             -->
-                   '.$botton.'
+                   '.$button.'
                 </div>
                 <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb"
                     alt="Thumbnail [200x250]" style="width: 200px; height: 250px;"
