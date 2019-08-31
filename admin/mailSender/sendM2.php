@@ -6,6 +6,11 @@
   if(isset($_POST['Id'])){
     $LocatorId = $_POST['Id'];
     
+    // Edit below two line for activating emails services
+    //It is necessary
+    $senderEmail = 'YOUR EMAIL HERE';
+    $senderEmailPass = 'YOUR PASS HERE';
+
     $q = "SELECT * from locators where Id='".$LocatorId."' ";
     $res=mysqli_query($con,$q);
     $data = mysqli_fetch_assoc($res);
@@ -56,8 +61,8 @@
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'jeevanrakt@gmail.com';                 // SMTP username
-        $mail->Password = 'Jee000Rakt';                           // SMTP password
+        $mail->Username = $senderEmail;                 // SMTP username
+        $mail->Password = $senderEmailPass;                           // SMTP password
         $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 465;                                    // TCP port to connect to
             
