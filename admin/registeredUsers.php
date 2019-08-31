@@ -1,17 +1,6 @@
 <?php 
-
-
-    function calcAge($a) {
-        return date_diff(date_create($a), date_create(Date('Y-m-d')))->y;
-    }
-    function calPostTime($a){
-        $date1=date_create($a);
-        $date2=date_create(Date('Y-m-d'));
-        $diff=date_diff($date1,$date2);
-        return $diff->format("%a");
-       
-    }
-
+ 
+    require 'calTimeStampDiff.php';
     if(isset($_POST['key'])){
         require 'dbcon.php';
         $response = '<div class="users">
@@ -39,11 +28,11 @@
                     </div>
                     <p class="card-text mb-auto">
                         '.$age.' Yrs old<br><small>'.$data['AditionalDetails'].'</small></p>
-                    <a href="#"><small class="text-success">'.calPostTime($data['LastPostDate']).' Days ago</small></a>
+                    <a href="#"><small class="text-success">Registered '.timeStampDiff($data['LastPostDate']).' ago</small></a>
                     <!--available only when auto inform is disabled
                 once sended update "sent" color-"Green"
             -->
-                    <button type="submit" class="btn btn-sm btn-danger mt-1">Infrom</button>
+                  <!--  <button type="submit" class="btn btn-sm btn-danger mt-1">Infrom</button>-->
                 </div>
                 <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb"
                     alt="Thumbnail [200x250]" style="width: 200px; height: 250px;"
@@ -73,11 +62,11 @@
                     </div>
                     <p class="card-text mb-auto">
                         '.$age.' Yrs old<br><small>'.$data['AditionalDetails'].'</small></p>
-                    <a href="#"><small class="text-success">'.calPostTime($data['LastPostDate']).' Days ago</small></a>
+                    <a href="#"><small class="text-success">Regestered '.timeStampDiff($data['LastPostDate']).' ago</small></a>
                     <!--available only when auto inform is disabled
                 once sended update "sent" color-"Green"
             -->
-                    <button type="submit" class="btn btn-sm btn-danger mt-1">Modify</button>
+                  <!--  <button type="submit" class="btn btn-sm btn-danger mt-1">Modify</button>-->
                 </div>
                 <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb"
                     alt="Thumbnail [200x250]" style="width: 200px; height: 250px;"

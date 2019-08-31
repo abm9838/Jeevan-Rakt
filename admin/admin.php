@@ -62,7 +62,8 @@
 
         <div class="main-nav pt-2 pl-2 pb-2 bg-primary">
             <div class="d-flex ">
-                <div class="p-2 flex-grow-1 txt-white"><?php  echo 'Hi! <span class="h6">'.$_SESSION['auser']; ?></span></div>
+                <div class="p-2 flex-grow-1 txt-white"><?php  echo 'Hi! <span class="h6">'.$_SESSION['auser']; ?>
+                </span><img src="../images/white-tick.png" height="20" width="20" class="ml-2"></div>
                 <div class="p-2 txt-white">
                     <input type="checkbox" class="input-lg" aria-label="Auto inform" checked>&nbsp;Auto Inform
                 </div>
@@ -207,9 +208,10 @@
             $("#logout").on("click",function(e){
                 window.location.href = "logout.php";
             });
-            
 
             getUrgentData('getUrgent');
+
+           
 
             $("#vn-locator").on( "click", function( event ) {
                 //clear Present Data
@@ -385,7 +387,7 @@
                 function informNow(key){
                 //alert("OK Sending Mail.");
                 $.ajax({
-                    url:'mailSender/Test.php',
+                    url:'mailSender/sendM2.php',
                     method:'POST',
                     dataTpe:'text',
                     data : {
@@ -399,6 +401,7 @@
             }
         });
 
+       
         
 
             

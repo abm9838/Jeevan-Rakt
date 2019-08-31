@@ -52,6 +52,8 @@
             </ul>
         </div>
     </nav>
+
+
     
 <div class="container  bgr">
 <br>  
@@ -156,7 +158,7 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-location-arrow"></i> </span>
     </div>
-        <input class="form-control" placeholder="Addition Details" type="text" name="Additional" required >
+        <input class="form-control" id="addtional" placeholder="Addition Details or Illness" type="text" name="Additional" required >
     </div> 
     
     <!-- Notify ME-->  
@@ -257,6 +259,9 @@
         </div>
       </footer>
 
+      <script>
+       // $('#addtional').
+      <script>
 
 </body>
 </html>
@@ -281,8 +286,8 @@ if(isset($_POST['submit'])){
       $notify = 'Y';
     }
     
-    
-    $currentDate = date('Y-m-d');
+    date_default_timezone_set("Asia/Kolkata");
+    $currentDate = Date('Y-m-d H:i:s'); 
     $n = rand(1,8);
     $img = '../images/Profile/Male_Dummy('.$n.').png';
     if($gender=="F"){
@@ -299,7 +304,7 @@ if(isset($_POST['submit'])){
 
     $query= "INSERT INTO `doners`(`Id`, `Active`, `Name`, `BloodGr`, `Gender`, `Address`, `DOB`,
     `LastPostDate`, `LastDonationDate`, `Mob`, `Email`, `RegDate`, `NotifyMe`, `Img`, `AditionalDetails`)
-    VALUES ('$id','Y','$name','$bloodGr','$gender','$states','$dob','$currentDate','1900-00-00',
+    VALUES ('$id','N','$name','$bloodGr','$gender','$states','$dob','$currentDate','1900-00-00',
     '$mob','$email','$currentDate','$notify','$img','$additional')";
 
     $res=mysqli_query($con,$query);

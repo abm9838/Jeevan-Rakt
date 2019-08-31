@@ -35,6 +35,17 @@
             $_SESSION['aid']=$current_id;   //new variable sid 
             $_SESSION['auser']=$current_user; 
 
+            //UPDAte DB
+            date_default_timezone_set("Asia/Kolkata");
+            $timeStamp =  Date('Y-m-d H:i:s');
+            $sql = "UPDATE `admin0` SET `LastActive`='$timeStamp',`OnlineStatus`='T' WHERE Id='$current_id'";
+
+            if (mysqli_query($con, $sql)) {
+               // echo "Record updated successfully";
+            } else {
+                //echo "Error updating record: " . mysqli_error($conn);
+            }
+
            // header('Location:admin.php');
     }
 

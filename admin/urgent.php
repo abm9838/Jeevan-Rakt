@@ -1,16 +1,6 @@
 <?php 
 
-
-    function calcAge($a) {
-        return date_diff(date_create($a), date_create(Date('Y-m-d')))->y;
-    }
-    function calPostTime($a){
-        $date1=date_create($a);
-        $date2=date_create(Date('Y-m-d'));
-        $diff=date_diff($date1,$date2);
-        return $diff->format("%a");
-       
-    }
+    require 'calTimeStampDiff.php';
 
     if(isset($_POST['key'])){
         require 'dbcon.php';
@@ -27,8 +17,11 @@
                 $class = "danger";
                 $informStatusf='';
                 $informStatusText = "inform now";
+                $showName = '<strong class="d-inline-block mb-2 text-primary">'.$data['Name'].'</strong>';
                 if($informStatus!="1111-11-11"){
-                    $informStatusf='informed <b>'.calPostTime($informStatus).'</b> days ago';
+                    $informStatusf='informed <b>'.timeStampDiff($informStatus).'</b> ago';
+                    $showName = '<strong class="d-inline-block mb-2 text-primary">'.$data['Name'].'
+                    <img src="../images/green-tick.png" height="20" width="20"></strong>';
                     $class = "success";
                     $informStatusText = "informed";
                 }
@@ -37,7 +30,7 @@
         <div class="col-md-6">
             <div class="card flex-md-row mb-4 box-shadow h-md-250">
                 <div class="card-body d-flex flex-column align-items-start">
-                    <strong class="d-inline-block mb-2 text-primary">'.$data['Name'].'</strong>
+                    '.$showName.'
                     <h3 class="mb-0">
                         <!-- RED for Locators-->
                         <!-- GREEN for Doners-->
@@ -48,7 +41,7 @@
                     </div>
                     <p class="card-text mb-auto">
                         '.$age.' Yrs old<br><small>'.$data['AditionalDetails'].'</small></p>
-                    <a href="#"><small class="text-success">'.calPostTime($data['LastPostDate']).' Days ago</small></a>
+                    <a href="#"><small class="text-success">'.timeStampDiff($data['LastPostDate']).' ago</small></a>
                     <!--available only when auto inform is disabled
                 once sended update "sent" color-"Green"
             -->     

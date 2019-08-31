@@ -1,16 +1,7 @@
 <?php 
 
-
-    function calcAge($a) {
-        return date_diff(date_create($a), date_create(Date('Y-m-d')))->y;
-    }
-    function calPostTime($a){
-        $date1=date_create($a);
-        $date2=date_create(Date('Y-m-d'));
-        $diff=date_diff($date1,$date2);
-        return $diff->format("%a");
-       
-    }
+    require 'calTimeStampDiff.php';
+    
 
     if(isset($_POST['key'])){
         require 'dbcon.php';
@@ -19,16 +10,73 @@
         <div class="row mb-2 data-here">';
 
         if($_POST['key'] == 'getDoner'){
-            $query ="SELECT * from doners WHERE Active='Y' ";
+            $query ="SELECT * from doners";
             $res=mysqli_query($con,$query);
            while($data = mysqli_fetch_assoc($res)){
                 $age = calcAge($data['DOB']);
+                $botton = ' <button type="submit" id="deActivateButton" class="btn btn-sm btn-danger mt-1">
+                <input class="val" value="'.$data['Id'].'" style="display:none;">Deactivate</button>';
+                $Showname = '<strong class="d-inline-block mb-2 text-success">'.$data['Name'].'
+                <img src="../images/green-tick.png" height="20" width="20"></strong>';
+                $script = '<script>
+                $(document).ready(function() {
+    
+                    $("#activateButton").click(function (){
+                        var val = this.firstElementChild.value;
+                        console.log("Trying to activate..."+val);
+                        //alert(val);
+                        var varData = \'Id=\'+val;
+            
+                        $.ajax({
+                            type : \'POST\',
+                            url : \'activate.php\',
+                            data : varData,
+                            success : function(res){
+                                alert(res);
+                            }
+                        });
+                    });
+                });
+                    
+                </script>';
+                if($data['Active']=='N'){
+                    $botton = ' <button type="submit" id="activateButton" class="btn btn-sm btn-success mt-1">
+                    <input class="val" value="'.$data['Id'].'" style="display:none;">Activate</button>';
+                    $Showname = '<strong class="d-inline-block mb-2 text-danger">'.$data['Name'].'</strong>';
+                    $script = '<script>
+                    $(document).ready(function() {
+        
+                        $("#activateButton").click(function (){
+                            var val = this.firstElementChild.value;
+                            console.log("Trying to activate..."+val);
+                            //alert(val);
+                            var varData = \'Id=\'+val;
+                
+                            $.ajax({
+                                type : \'POST\',
+                                url : \'activate.php\',
+                                data : varData,
+                                success : function(res){
+                                    alert(res);
+                                }
+                            });
+                        });
+                    });
+                        
+                    </script>';
+                }
+                if($age<18){
+                    $botton = ' <button type="submit" id="BelowAgeButton" class="btn btn-sm btn-danger mt-1" disabled>Below Age</button>';
+                }else if($age>=60){
+                    $botton = ' <button type="submit" id="aboveAgeButton" class="btn btn-sm btn-danger mt-1" disabled>Above Age</button>';
+                
+                }
                 $response.='
                 <!--User 1-->
         <div class="col-md-6">
             <div class="card flex-md-row mb-4 box-shadow h-md-250">
                 <div class="card-body d-flex flex-column align-items-start">
-                    <strong class="d-inline-block mb-2 text-primary">'.$data['Name'].'</strong>
+                    '.$Showname.'
                     <h3 class="mb-0">
                         <!-- RED for Locators-->
                         <!-- GREEN for Doners-->
@@ -39,11 +87,11 @@
                     </div>
                     <p class="card-text mb-auto">
                         '.$age.' Yrs old<br><small>'.$data['AditionalDetails'].'</small></p>
-                    <a href="#"><small class="text-success">'.calPostTime($data['LastPostDate']).' Days ago</small></a>
+                    <a href="#"><small class="text-success">'.timeStampDiff($data['LastPostDate']).' ago</small></a>
                     <!--available only when auto inform is disabled
                 once sended update "sent" color-"Green"
             -->
-                    <button type="submit" class="btn btn-sm btn-danger mt-1">Modify</button>
+                   '.$botton.'
                 </div>
                 <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb"
                     alt="Thumbnail [200x250]" style="width: 200px; height: 250px;"
@@ -54,7 +102,10 @@
             }
         }
 
-        $response.='</div></div>';
+        $response.='</div></div>'.$script.'';
+
+        
+        
         exit($response);
     }
 ?>
