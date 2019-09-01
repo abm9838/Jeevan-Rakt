@@ -88,7 +88,7 @@
                     </div>
                     <p class="card-text mb-auto">
                         '.$age.' Yrs old<br><small>'.$data['AditionalDetails'].'</small></p>
-                    <a href="#"><small class="text-success">'.timeStampDiff($data['LastPostDate']).' ago</small></a>
+                    <a href="#"><small class="text-success">Regestered '.timeStampDiff($data['RegDate']).' ago</small></a>
                     <!--available only when auto inform is disabled
                 once sended update "sent" color-"Green"
             -->

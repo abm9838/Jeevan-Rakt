@@ -162,7 +162,8 @@
       echo "Sorry! No Person found, who can donate for Blood Gr. ".$locBGr." in ".$locAdd;
     }else{
       echo ($count-1)." people receive the msg"."\n";
-      $date = Date('Y-m-d');
+      date_default_timezone_set("Asia/Kolkata");
+      $date = Date('Y-m-d H:i:s'); 
       $infQuery = "UPDATE `locators` SET `informStatus`='$date' WHERE `Id`='$LocatorId'";
       if (mysqli_query($con, $infQuery)) {
         echo "";

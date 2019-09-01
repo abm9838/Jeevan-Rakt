@@ -182,7 +182,8 @@ $(document).ready(function() {
         $mob = $_POST['mobile'];
         $email = $_POST['email'];
         $msg = $_POST['message'];
-        $date = Date('y-m-d');
+        date_default_timezone_set("Asia/Kolkata");
+        $date = Date('Y-m-d H:i:s'); 
         $id=substr(str_shuffle("9ASDF1G0HJKLMN8BVC7XZ6QWE5RTY2UIO43P"), 0, 7);
 
         $q1 = "INSERT INTO `messages`(`Id`, `Name`, `Mob`, `Email`, `Date`, `Msg`) 

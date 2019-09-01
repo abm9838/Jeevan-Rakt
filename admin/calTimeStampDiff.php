@@ -5,7 +5,7 @@
     $currentTime = strtotime(Date('Y-m-d H:i:s')); 
     //echo $currentTime;
     
-    $date1 = strtotime("2019-08-31 16:11:01"); 
+    $date1 = strtotime($date1); 
     //echo $date1;
 
     // Formulate the Difference between two dates 
@@ -80,8 +80,6 @@ function calPostTime($a){
     $date2=date_create(Date('Y-m-d'));
     $diff=date_diff($date1,$date2);
     return $diff->format("%a");
-    
-   
 }
 
 ?>

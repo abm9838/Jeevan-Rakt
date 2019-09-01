@@ -1,11 +1,11 @@
 <?php 
 
     require 'calTimeStampDiff.php';
-
+    
     if(isset($_POST['key'])){
         require 'dbcon.php';
-        $response = '<div class="urgent-locators">
-        <h2 class="text-white">Urgent Need of blood</h2><br>
+        $response = '<div class="locators">
+        <h2 class="text-white">List of people who needs blood</h2><br>
         <div class="row mb-2 data-here">';
 
         if($_POST['key'] == 'getUrgent'){
@@ -18,12 +18,12 @@
                 $informStatusf='';
                 $informStatusText = "inform now";
                 $showName = '<strong class="d-inline-block mb-2 text-primary">'.$data['Name'].'</strong>';
-                if($informStatus!="1111-11-11"){
+                if($informStatus!="0000-00-00 00:00:00"){
                     $informStatusf='informed <b>'.timeStampDiff($informStatus).'</b> ago';
-                    $showName = '<strong class="d-inline-block mb-2 text-primary">'.$data['Name'].'
-                    <img src="../images/green-tick.png" height="20" width="20"></strong>';
                     $class = "success";
                     $informStatusText = "informed";
+                    $showName = '<strong class="d-inline-block mb-2 text-primary">'.$data['Name'].'
+                    <img src="../images/green-tick.png" height="20" width="20"></strong>';
                 }
                 $response.='
                 <!--User 1-->
@@ -41,7 +41,7 @@
                     </div>
                     <p class="card-text mb-auto">
                         '.$age.' Yrs old<br><small>'.$data['AditionalDetails'].'</small></p>
-                    <a href="#"><small class="text-success">'.timeStampDiff($data['LastPostDate']).' ago</small></a>
+                    <a href="#"><small class="text-success">Registerd '.timeStampDiff($data['RegDate']).' ago</small></a>
                     <!--available only when auto inform is disabled
                 once sended update "sent" color-"Green"
             -->     

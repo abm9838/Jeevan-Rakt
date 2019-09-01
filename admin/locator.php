@@ -18,7 +18,7 @@
                 $informStatusf='';
                 $informStatusText = "inform now";
                 $showName = '<strong class="d-inline-block mb-2 text-primary">'.$data['Name'].'</strong>';
-                if($informStatus!="1111-11-11"){
+                if($informStatus!="0000-00-00 00:00:00"){
                     $informStatusf='informed <b>'.timeStampDiff($informStatus).'</b> ago';
                     $class = "success";
                     $informStatusText = "informed";
@@ -41,7 +41,7 @@
                     </div>
                     <p class="card-text mb-auto">
                         '.$age.' Yrs old<br><small>'.$data['AditionalDetails'].'</small></p>
-                    <a href="#"><small class="text-success">'.timeStampDiff($data['LastPostDate']).' ago</small></a>
+                    <a href="#"><small class="text-success">Regestered '.timeStampDiff($data['RegDate']).' ago</small></a>
                     <!--available only when auto inform is disabled
                 once sended update "sent" color-"Green"
             -->     

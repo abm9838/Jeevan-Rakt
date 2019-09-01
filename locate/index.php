@@ -341,8 +341,8 @@ if(isset($_POST['submit'])){
       $urgent = 'Y';
     }
     
-    
-    $currentDate = date('Y-m-d');
+    date_default_timezone_set("Asia/Kolkata");
+    $currentDate = Date('Y-m-d H:i:s'); 
     $n = rand(1,7);
     $img = '../images/Profile/Male_Dummy('.$n.').png';
     if($gender=="F"){
