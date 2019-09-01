@@ -75,7 +75,7 @@
                                 <div class="myth-data col-8">
                                   <br>
                                     <h4><span class="myth-que">Myth</span>&nbsp;Donating blood makes me feel weak.</h4>
-                                    <p><span class="myth-que">Fact</span>&nbsp;<spam class="h5">&nbsp;NO, </spam> A healthy person can donate blood 
+                                    <p><span class="myth-que">Fact</span>&nbsp;<span class="h5">&nbsp;NO, </span> A healthy person can donate blood 
                                       four times a year with a minimum a 
                                       <b>3 months’ gap</b> between each blood donation. Feel free to donate blood regularly.</p>
                                   <br><br>
@@ -89,7 +89,7 @@
                                   <div class="myth-data col-8">
                                     <br>
                                       <h4><span class="myth-que">Myth</span>&nbsp;Donating blood frequently can fluctuate my blood pressure and blood sugar levels.</h4>
-                                      <p><span class="myth-que">Fact</span>&nbsp;<spam class="h5">&nbsp;NO, </spam>the blood pressure and blood sugar
+                                      <p><span class="myth-que">Fact</span>&nbsp;<span class="h5">&nbsp;NO, </span>the blood pressure and blood sugar
                                          levels do not fluctuate provided the pre-donation values are within normal limits.  A diabetic patient on insulin cannot donate 
                                          blood.</p>
                                     <br><br>
@@ -103,7 +103,7 @@
                                   <div class="myth-data col-8">
                                     <br>
                                       <h4><span class="myth-que">Myth</span>&nbsp;I am a retired person; I think I am  too old to donate blood.</h4>
-                                      <p><span class="myth-que">Fact</span>&nbsp;<spam class="h5">&nbsp;YES, </spam>Donor must be 18 -60 years age and should have a minimum weight of 50 kgs.A donor can again donate blood after 3 months of the last donation.</p>
+                                      <p><span class="myth-que">Fact</span>&nbsp;<span class="h5">&nbsp;YES, </span>Donor must be 18 -60 years age and should have a minimum weight of 50 kgs.A donor can again donate blood after 3 months of the last donation.</p>
                                       <br><br>
                                   </div>
                                   <div class="col-2"></div>

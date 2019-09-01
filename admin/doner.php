@@ -1,10 +1,10 @@
 <?php 
-
+    require 'dbcon.php';    
     require 'calTimeStampDiff.php';
     
 
     if(isset($_POST['key'])){
-        require 'dbcon.php';
+        
         $response = '<div class="doner">
         <h2 class="text-white">List of Active Doners</h2><br>
         <div class="row mb-2 data-here">';

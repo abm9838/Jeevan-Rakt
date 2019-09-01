@@ -17,7 +17,7 @@
     $locAdd = $data['Address'];
     $locBGr = $data['BloodGr'];
     $locName = $data['Name'];
-    echo "For ".$locName."\n";
+    
     //retrieve data from fonator
     $dquery ="SELECT * from doners WHERE `Address`='".$locAdd."' AND `BloodGr`='".$locBGr."'";
     if($locBGr=="AB+"){
@@ -47,7 +47,7 @@
     }
     
     $dres=mysqli_query($con,$dquery);
-    $count=1;
+    $count=0;
     while($ddata = mysqli_fetch_assoc($dres)){
         $sName =$ddata['Name'];
         $sEmail= $ddata['Email'];
@@ -149,29 +149,36 @@
         
         </container>';
         if(!$mail->send()) {
-            echo $count."-Failed! Message could not send to - ".$ddata['Email']."\n";
-            echo $count."-Mailer Error: " . $mail->ErrorInfo."\n";
+           // echo ($count+1)."-Failed! Message could not send to - ".$ddata['Email']."\n";
+            //echo ($count+1)."-Mailer Error: " . $mail->ErrorInfo."\n";
         } else {
-            echo $count."-nMessage send to - ".$ddata['Email']."\n";
+            $count++;
+            echo $count."- Message send to - ".$ddata['Email']."\n";
         }
-        $count++;
-        //end While
-    }
+        
+    }//end While
+    
+    echo $count;
+    echo "\nFor ".$locName."\n";
 
-    if($count==1){
+    if($count==0){
       echo "Sorry! No Person found, who can donate for Blood Gr. ".$locBGr." in ".$locAdd;
     }else{
-      echo ($count-1)." people receive the msg"."\n";
+      echo $count." people receive the msg"."\n";
       date_default_timezone_set("Asia/Kolkata");
       $date = Date('Y-m-d H:i:s'); 
+
+      //Update TimeStamp
       $infQuery = "UPDATE `locators` SET `informStatus`='$date' WHERE `Id`='$LocatorId'";
       if (mysqli_query($con, $infQuery)) {
         echo "";
         echo "Record updated successfully";
-    } else {
+      } else {
         echo "Error updating record: " . mysqli_error($con);
-    }
+      }
     }
 
+
 }
+
 ?>

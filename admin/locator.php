@@ -1,15 +1,15 @@
 <?php 
-
+    require 'dbcon.php';
     require 'calTimeStampDiff.php';
     
     if(isset($_POST['key'])){
-        require 'dbcon.php';
+        
         $response = '<div class="locators">
         <h2 class="text-white">List of people who needs blood</h2><br>
         <div class="row mb-2 data-here">';
 
         if($_POST['key'] == 'getLocators'){
-            $query ="SELECT * from locators WHERE Active='Y'";
+            $query ="SELECT * from locators WHERE Active='Y' ";
             $res=mysqli_query($con,$query);
            while($data = mysqli_fetch_assoc($res)){
                 $age = calcAge($data['DOB']);
@@ -41,7 +41,7 @@
                     </div>
                     <p class="card-text mb-auto">
                         '.$age.' Yrs old<br><small>'.$data['AditionalDetails'].'</small></p>
-                    <a href="#"><small class="text-success">Regestered '.timeStampDiff($data['RegDate']).' ago</small></a>
+                    <a href="#"><small class="text-success">Registerd '.timeStampDiff($data['RegDate']).' ago</small></a>
                     <!--available only when auto inform is disabled
                 once sended update "sent" color-"Green"
             -->     
@@ -71,13 +71,44 @@
                  console.log("Trying to send Msg..."+val);
                  //alert(val);
                  var varData = \'Id=\'+val;
-     
+                var preData = this;
+                this.innerHTML = "<img src=\'../images/sending.gif\' height=\'30px\' width=\'50px\'>";
                  $.ajax({
                      type : \'POST\',
                      url : \'mailSender/sendM2.php\',
                      data : varData,
+
+                     beforeSend : function(){
+                        this.textContent = "sending...";
+                     },
+                     complete : function(){
+                        // preData.innerHTML = "Informed";
+                     },
+                     error : function(){
+                        //Error 
+                            preData.innerHTML = "Error!";
+                             preData.classList.remove("btn-success");
+                             preData.classList.remove("btn-danger");
+                             preData.classList.add("btn-danger");
+                     },
                      success : function(res){
+                         if(res[0]>0){
+                             //message sent for some people
+                             preData.innerHTML = "Informed";
+                             preData.classList.remove("btn-success");
+                             preData.classList.remove("btn-danger");
+                             preData.classList.add("btn-success");
+                             
+                         }else{
+                             //No people found
+                             preData.innerHTML = "No Doner";
+                             preData.classList.remove("btn-success");
+                             preData.classList.remove("btn-danger");
+                             preData.classList.add("btn-danger");
+                         }
+                         
                          alert(res);
+                         console.log(res[0]);
                      }
                  });
             });
