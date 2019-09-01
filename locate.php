@@ -1,40 +1,10 @@
+<?php 
+    include('dbcon.php');
+    include('assets/header.php');
+?>
 
+<body class=" bgr" onload="myfunction();">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Jeevan Rakt</title>
-    <!-- Shortcut Icons -->
-    <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.png">
-    <link rel="apple-touch-icon" type="image/x-icon" href="../images/favicon.png">
-
-  <!-- SEO tags -->
-  <meta name="description" content="JeevanRakht">
-  <meta name="keywords" content="JeevanRakht, Blood Dontation, Blood Bank">
-
-  <!--GOOGLE FONT-->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700|Spectral:400,400i,700,700i" rel="stylesheet">
-
-  <!-- jQuery file -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- Main CSS file -->
-  <link rel="stylesheet" type="text/css" href="../css/main.css" />
-  <link rel="stylesheet" type="text/css" href="../donate/style.css" />
-
-
-</head>
-<body class=" bgr">
 
 
 
@@ -62,26 +32,10 @@ aria-hidden="false" display="block">
     </div>
   </div>
 </div>
+<?php 
+    include('assets/nav.php');
+?>
 
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand d-lg-none" href="../index.php">Jeevan Rakht</a>
-        <button class="navbar-toggler mt-2 mr-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto">
-              <li><a href="">About</a></li>
-              <li><a href="">Why donate?</a></li>
-              <li><a href="">Eligibility</a></li>
-              <li class="brand d-none d-lg-block"><a href="../index.php"><img src="../images/logo.png" alt=""></a></li>
-              <li><a href="">How to donate?</a></li>
-              <li><a href="">FAQ & Info</a></li>
-              <li><a href="../contact.php">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-    
 <div class="container  bgr">
 <br>  
 <div class="card bgd text-white">
@@ -212,83 +166,9 @@ aria-hidden="false" display="block">
 
 <br><br>
 
-<!-- Footer -->
- <!-- FOOTER Section -->
- <footer class="mainfooter mt-4">
-        <div class="container py-5">
-          <div class="row text-center">
-    
-            <div class="col-xs-6 col-sm-12 col-md-3 col-lg-3">
-    
-              <!--Column1-->
-              <div class="footer-pad">
-                <h5>JeevanRakht</h5>
-    
-                  <ul class="list-unstyled">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Why Donate</a></li>
-                    <li><a href="#">Eligibility</a></li>
-                    <li><a href="#">How to Donate</a></li>
-                    <li><a href="#">FAQ &amp; Info.</a></li>
-                    <li><a href="../contact.php">Contact</a></li>
-                  </ul>
-    
-              </div>
-            </div>
-    
-            <div class="col-xs-6 col-sm-12 col-md-3 col-lg-3">
-    
-              <!--Column1-->
-              <div class="footer-pad">
-                <h5>Get Involved</h5>
-                <ul class="list-unstyled">
-                  <li><a href="../donate/index.php">Donate Blood</a></li>
-                  <li><a href="index.php">Locate Blood</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-    
-              <!--Column1-->
-              <div class="footer-pad">
-                <h5>Stay Connected</h5>
-                <ul class="list-unstyled">
-                  <li>
-                    <a href="https://www.facebook.com/jeevanrakt"><i class="p-1 fab fa-facebook-f"></i></a>
-                    <a href="https://www.twitter.com/jeevanrakt"><i class="p-1 fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/jeevanrakt"><i class="p-1 fab fa-instagram"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-    
-              <!--Column1-->
-              <div class="footer-pad">
-                <div class="footer-subscribe">
-                  <h5>YOU MAY NOT THINK YOU'RE AN ACTIVIST...<br>BUT WE DO</h5>
-                  <br><br>
-                  <div class="email-btn-wrapper">
-                    <input type="email" class="footer-email" placeholder="Email ID">
-                    <button class="btn-join">JOIN</button>
-                    <br>
-                    <br>
-                    <input type="checkbox" class="m-1">
-                    <p class="d-inline p-1">Yes, I'd also like to hear more about blood donation.</p>
-                  </div>
-    
-                </div>
-              </div>
-            </div>
-    
-    
-          </div>
-        </div>
-        <div class="after-footer pr-5 pl-5 py-3 justify-content-sm-center text-right">
-          <a href="#" class="m-2">Privacy Policy</a>
-          <a href="#" class="m-2">Terms of Service</a>
-        </div>
-      </footer>
+<?php 
+    include('assets/footer.php');
+?>
 <script>
   $(document).ready(function() {
     var btn =  $("#submit");
@@ -323,8 +203,6 @@ aria-hidden="false" display="block">
 
 
 <?php
-
-include('../dbcon.php');
 
 if(isset($_POST['submit'])){
     

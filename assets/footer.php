@@ -8,14 +8,14 @@
               <!--Column1-->
               <div class="footer-pad">
                 <h5>JeevanRakht</h5>
-    
+               
                   <ul class="list-unstyled">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Why Donate</a></li>
-                    <li><a href="#">Eligibility</a></li>
-                    <li><a href="#">How to Donate</a></li>
-                    <li><a href="#">FAQ &amp; Info.</a></li>
-                    <li><a href="../contact.php">Contact</a></li>
+                    <li><a href="http://localhost/Jeevan-Rakt/about">About</a></li>
+                    <li><a href="http://localhost/Jeevan-Rakt/why_donate">Why Donate</a></li>
+                    <li><a href="http://localhost/Jeevan-Rakt/eligibility">Eligibility</a></li>
+                    <li><a href="http://localhost/Jeevan-Rakt/how_to_donate">How to Donate</a></li>
+                    <li><a href="http://localhost/Jeevan-Rakt/FAQ">FAQ &amp; Info.</a></li>
+                    <li><a href="http://localhost/Jeevan-Rakt/contact">Contact</a></li>
                   </ul>
     
               </div>
@@ -27,8 +27,8 @@
               <div class="footer-pad">
                 <h5>Get Involved</h5>
                 <ul class="list-unstyled">
-                  <li><a href="assets/donate.html">Donate Blood</a></li>
-                  <li><a href="assets/locate.html">Locate Blood</a></li>
+                  <li><a href="http://localhost/Jeevan-Rakt/donate">Donate Blood</a></li>
+                  <li><a href="http://localhost/Jeevan-Rakt/locate">Locate Blood</a></li>
                 </ul>
               </div>
             </div>
@@ -74,3 +74,9 @@
           <a href="#" class="m-2">Terms of Service</a>
         </div>
       </footer>
+      <script>
+        var preloader = document.getElementById('loading');
+        function myfunction(){
+          preloader.style.display = 'none';
+        }
+      </script>

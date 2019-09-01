@@ -3,11 +3,12 @@
 <html>
 
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>JeevanRakht</title>
+  <title>JeevanRakt</title>
 
   <!-- Shortcut Icons -->
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
@@ -31,8 +32,10 @@
   <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" />
 
   <!-- Main CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/main.css" />
-
+ 
 </head>
+<div id="loading">
 
-<body>
+</div>

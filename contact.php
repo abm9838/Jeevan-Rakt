@@ -1,6 +1,9 @@
 <?php 
     require 'dbcon.php';
     include('assets/header.php');
+?>
+<body onload="myfunction();">
+<?php
     include('assets/nav.php');
 
 ?>

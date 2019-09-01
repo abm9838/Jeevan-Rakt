@@ -2,3 +2,20 @@
 # HTID:10618609: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
 php_value display_errors 1
 # DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:10618609:
+
+# Mod rewrite start here
+RewriteEngine on
+
+# do not appy to the existing directories 
+# mean if your folder exist on the server then don't change anything and don't run the rules
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+# check for file in directory with .php extension
+RewriteCond %{REQUEST_FILENAME}\.php -f
+
+
+# show the page that has .php extension
+RewriteRule ^(.*)$ $1.php [NC,L]
+
+ Options +MultiViews
