@@ -72,7 +72,7 @@ aria-hidden="false" display="block">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
-		<select class="custom-select" style="max-width: 120px;" >
+		<select class="custom-select" style="max-width: 70px;" >
 		    <option selected="">+91</option>
 		    <option value="1">+1</option>
 		    <option value="2">+23</option>

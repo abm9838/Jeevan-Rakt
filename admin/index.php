@@ -95,7 +95,7 @@
         <input type="text" id="user" class="form-control" placeholder="UserName" required="" autofocus=""><br>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="pass" class="form-control" placeholder="Password" required="">
-        <button class="btn btn-lg btn-primary btn-block" id="submit" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block mt-3" id="submit" type="submit">Sign in</button>
         <p class="mt-5 mb-3 text-muted small">Jeevan-Rakt &copy;2019</p>
       </form>
 
