@@ -19,31 +19,31 @@
     $locName = $data['Name'];
     
     //retrieve data from fonator
-    $dquery ="SELECT * from doners WHERE `Address`='".$locAdd."' AND `BloodGr`='".$locBGr."'";
+    $dquery ="SELECT * from doners WHERE `Active`='Y' AND `Address`='".$locAdd."' AND `BloodGr`='".$locBGr."'";
     if($locBGr=="AB+"){
       //From All
-      $dquery ="SELECT * from doners WHERE `Address`='".$locAdd."'";
+      $dquery ="SELECT * from doners WHERE `Active`='Y' AND WHERE `Address`='".$locAdd."'";
     }else if($locBGr=="O+"){
       //From O+ O-
-      $dquery ="SELECT * from doners WHERE `Address`='".$locAdd."' AND (`BloodGr`='O+' OR `BloodGr`='O-') ";
+      $dquery ="SELECT * from doners WHERE `Active`='Y' AND WHERE `Address`='".$locAdd."' AND (`BloodGr`='O+' OR `BloodGr`='O-') ";
     }else if($locBGr=="A+"){
       //From A+ A- O+ O-
-      $dquery ="SELECT * from doners WHERE `Address`='".$locAdd."' AND (`BloodGr`='O+' OR `BloodGr`='O-' OR `BloodGr`='A+' OR `BloodGr`='A-') ";
+      $dquery ="SELECT * from doners WHERE `Active`='Y' AND WHERE `Address`='".$locAdd."' AND (`BloodGr`='O+' OR `BloodGr`='O-' OR `BloodGr`='A+' OR `BloodGr`='A-') ";
     }else if($locBGr=="B+"){
       //From B+ B- O+ O-
-      $dquery ="SELECT * from doners WHERE `Address`='".$locAdd."' AND (`BloodGr`='O+' OR `BloodGr`='O-' OR `BloodGr`='B+' OR `BloodGr`='B-')";
+      $dquery ="SELECT * from doners WHERE `Active`='Y' AND WHERE `Address`='".$locAdd."' AND (`BloodGr`='O+' OR `BloodGr`='O-' OR `BloodGr`='B+' OR `BloodGr`='B-')";
     }else if($locBGr=="O-"){
       //From O-
-      $dquery ="SELECT * from doners WHERE `Address`='".$locAdd."' AND `BloodGr`='O-'";
+      $dquery ="SELECT * from doners WHERE `Active`='Y' AND WHERE `Address`='".$locAdd."' AND `BloodGr`='O-'";
     }else if($locBGr=="A-"){
       //From A- O-
-      $dquery ="SELECT * from doners WHERE `Address`='".$locAdd."' AND (`BloodGr`='A-' OR `BloodGr`='O-')";
+      $dquery ="SELECT * from doners WHERE `Active`='Y' AND WHERE `Address`='".$locAdd."' AND (`BloodGr`='A-' OR `BloodGr`='O-')";
     }else if($locBGr=="B-"){
       //From B- O-
-      $dquery ="SELECT * from doners WHERE `Address`='".$locAdd."' AND (`BloodGr`='B-' OR `BloodGr`='O-')";
+      $dquery ="SELECT * from doners WHERE `Active`='Y' AND WHERE `Address`='".$locAdd."' AND (`BloodGr`='B-' OR `BloodGr`='O-')";
     }else if($locBGr=="AB-"){
       //From AB- A- B- O-
-      $dquery ="SELECT * from doners WHERE `Address`='".$locAdd."' AND (`BloodGr`='A-' OR `BloodGr`='O-' OR `BloodGr`='AB-' OR `BloodGr`='B-')";
+      $dquery ="SELECT * from doners WHERE `Active`='Y' AND  WHERE `Address`='".$locAdd."' AND (`BloodGr`='A-' OR `BloodGr`='O-' OR `BloodGr`='AB-' OR `BloodGr`='B-')";
     }
     
     $dres=mysqli_query($con,$dquery);

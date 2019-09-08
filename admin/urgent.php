@@ -27,7 +27,7 @@
                 }
                 $response.='
                 <!--User 1-->
-        <div class="col-md-6">
+        <div class="col-md-6 pr-sm-0 col-sm-8 user-profile">
             <div class="card flex-md-row mb-4 box-shadow h-md-250">
                 <div class="card-body d-flex flex-column align-items-start">
                     '.$showName.'

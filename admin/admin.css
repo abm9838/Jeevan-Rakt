@@ -50,3 +50,12 @@ a{
     height:100%;
     border-radius: 15px;
 }
+
+@media (max-width: 576px) {
+    .user-profile{
+        position: absolute;
+        margin: 0 auto;
+        right: 1%;
+    }
+   
+}

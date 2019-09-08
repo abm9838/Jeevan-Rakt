@@ -65,7 +65,7 @@
                 <div class="p-2 flex-grow-1 txt-white"><?php  echo 'Hi! <span class="h6">'.$_SESSION['auser']; ?>
                 </span><img src="../images/white-tick.png" height="20" width="20" class="ml-2"></div>
                 <div class="p-2 txt-white">
-                    <input type="checkbox" class="input-lg" aria-label="Auto inform" checked>&nbsp;Auto Inform
+                    <input type="checkbox" class="input-lg" aria-label="Auto inform">&nbsp;Auto Inform
                 </div>
                 <div class="p-2">
                     <button type="button" id="logout" class="btn btn-outline-danger btn-sm"><span
@@ -79,7 +79,7 @@
                 <div class="side-nav pl-2">
                     <div class="row pt-2">
                         <div class="col-11">
-                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                            <div class="nav flex-column nav-pills nav-div" id="v-pills-tab" role="tablist"
                                 aria-orientation="vertical">
 
                                 <input type="text" class="form-control input-sm mb-2" aria-label="Search"
